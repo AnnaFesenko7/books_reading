@@ -10,14 +10,14 @@ const SetMultiselectValues = props => {
       <Field name={name}>
         {({ form, field }) => {
           const { setFieldValue } = form;
-          const { value } = field;
+          // const { value } = field;
           return (
             <SelectBooks
               id={name}
               {...field}
               {...rest}
-              selected={value}
-              onChange={val => setFieldValue(name, val)}
+              // selected={value}
+              onSubmit={val => setFieldValue(name, val)}
             />
           );
         }}

@@ -10,13 +10,13 @@ const Wrapper = styled.div`
   justify-content: space-around;
 `;
 
-const SelectBooks = ({ options, onChange, ...rest }) => {
+const SelectBooks = ({ options, onSubmit, ...rest }) => {
   const [value, setValue] = useState(null);
   const bookOptions = options.map(option => option.title);
   const [booksList, setBooksList] = useState([]);
 
   useEffect(() => {
-    onChange(booksList);
+    onSubmit(booksList);
     console.log('useeffect');
   }, [booksList]);
 
