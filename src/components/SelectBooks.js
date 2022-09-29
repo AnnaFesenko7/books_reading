@@ -10,25 +10,15 @@ const Wrapper = styled.div`
   justify-content: space-around;
 `;
 
-const SelectBooks = ({ options, onSubmit, ...rest }) => {
+const SelectBooks = ({ options, setArrayValue, ...rest }) => {
   const [value, setValue] = useState(null);
   const bookOptions = options.map(option => option.title);
   const [booksList, setBooksList] = useState([]);
 
   useEffect(() => {
-    onSubmit(booksList);
+    setArrayValue(booksList);
     console.log('useeffect');
   }, [booksList]);
-
-  // const addBookToList = book => {
-  //   console.log('booksList1', booksList);
-
-  //   setBooksList(prevBooksList => {
-  //     prevBooksList.push(book);
-  //     return prevBooksList;
-  //   });
-  //   console.log('booksList', booksList);
-  // };
 
   const onAddButtonClick = e => {
     const selectBook = options.find(book => book.title === value);

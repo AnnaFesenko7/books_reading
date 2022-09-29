@@ -12,6 +12,7 @@ const TrainingForm = () => {
   const [startTraining, setStartTraining] = useState(false);
 
   const onStartTraining = values => {
+    console.log('start', values);
     const keys = Object.keys(values);
     console.log(keys);
     keys.forEach(key => {
@@ -24,28 +25,28 @@ const TrainingForm = () => {
       if (key === 'selectedBooks') {
         setSelectedBooks(values[key]);
       }
-      if (endDate && selectedBooks.length > 0) {
-        setStartTraining('true');
-      }
+      // if (endDate && selectedBooks.length > 0) {
+      //   setStartTraining('true');
+      // }
     });
   };
 
   return (
     <>
-      {!startTraining && (
+      {/* {!startTraining && ( */}
+      <div>
+        <TrainingTitle text="Моє тренування" />
         <div>
-          <TrainingTitle text="Моє тренування" />
-          <div>
-            <TrainingDataSelection onStartTraining={onStartTraining} />
-          </div>
+          <TrainingDataSelection onStartTraining={onStartTraining} />
         </div>
-      )}
-      {startTraining && (
+      </div>
+      {/* )} */}
+      {/* {startTraining && (
         <StyledTimerContainer>
           <Timer endDate={endYear} />
           <Timer endDate={endDate} />
         </StyledTimerContainer>
-      )}
+      )} */}
     </>
   );
 };

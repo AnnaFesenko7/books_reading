@@ -47,8 +47,8 @@ const TrainingDataSelection = ({ onStartTraining }) => {
 
   const onSubmit = values => {
     console.log('Form data', values);
-    onStartTraining(values);
   };
+
   return (
     <Formik
       validationSchema={validationSchema}
@@ -67,7 +67,9 @@ const TrainingDataSelection = ({ onStartTraining }) => {
             options={booksOptions}
           />
 
-          <button type="submit">Submit</button>
+          <button onSubmit={onSubmit} type="submit">
+            Submit
+          </button>
         </Form>
       )}
     </Formik>

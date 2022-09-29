@@ -1,5 +1,5 @@
 import SelectBooks from './SelectBooks';
-import { Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage, FieldArray } from 'formik';
 export { useState } from 'react';
 
 const SetMultiselectValues = props => {
@@ -10,14 +10,15 @@ const SetMultiselectValues = props => {
       <Field name={name}>
         {({ form, field }) => {
           const { setFieldValue } = form;
-          // const { value } = field;
+
+          const { value } = field;
           return (
             <SelectBooks
               id={name}
               {...field}
               {...rest}
-              // selected={value}
-              onSubmit={val => setFieldValue(name, val)}
+              selected={value}
+              setArrayValue={val => setFieldValue(name, val)}
             />
           );
         }}
