@@ -25,28 +25,28 @@ const TrainingForm = () => {
       if (key === 'selectedBooks') {
         setSelectedBooks(values[key]);
       }
-      // if (endDate && selectedBooks.length > 0) {
-      //   setStartTraining('true');
-      // }
+      if (endDate && selectedBooks.length > 0) {
+        setStartTraining('true');
+      }
     });
   };
 
   return (
     <>
-      {/* {!startTraining && ( */}
-      <div>
-        <TrainingTitle text="Моє тренування" />
+      {!startTraining && (
         <div>
-          <TrainingDataSelection onStartTraining={onStartTraining} />
+          <TrainingTitle text="Моє тренування" />
+          <div>
+            <TrainingDataSelection onStartTraining={onStartTraining} />
+          </div>
         </div>
-      </div>
-      {/* )} */}
-      {/* {startTraining && (
+      )}
+      {startTraining && (
         <StyledTimerContainer>
           <Timer endDate={endYear} />
           <Timer endDate={endDate} />
         </StyledTimerContainer>
-      )} */}
+      )}
     </>
   );
 };

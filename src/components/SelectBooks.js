@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 const SelectBooks = ({ options, setArrayValue, ...rest }) => {
   const [value, setValue] = useState(null);
-  const bookOptions = options.map(option => option.title);
+  const bookOptions = options?.map(option => option.title);
   const [booksList, setBooksList] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const SelectBooks = ({ options, setArrayValue, ...rest }) => {
   };
 
   const onDelete = id => {
-    setBooksList(prevState => prevState.filter(book => book.id !== id));
+    setBooksList(prevState => prevState.filter(book => book._id !== id));
     console.log('booksList', booksList);
   };
 
@@ -41,11 +41,13 @@ const SelectBooks = ({ options, setArrayValue, ...rest }) => {
         <Autocomplete
           onChange={(event, newValue) => setValue(newValue)}
           val={value}
-          options={bookOptions}
+          options={bookOptions ? bookOptions : []}
           renderInput={params => <TextField {...params} />}
         />
 
-        <button onClick={onAddButtonClick}>Додати</button>
+        <button type="button" onClick={onAddButtonClick}>
+          Додати
+        </button>
       </Wrapper>
       <TrainingBooksList books={booksList} onDelete={onDelete} />
     </>

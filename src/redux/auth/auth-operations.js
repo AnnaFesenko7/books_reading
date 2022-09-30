@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:3001/api/';
+
+//axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL = 'https://booker-back-end.herokuapp.com/api/'
+
 
 const token = {
   set(token) {
@@ -12,15 +15,15 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('user/registration', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-});
+const register = createAsyncThunk('auth/register', async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('user/registration', credentials)
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error)
+    }
+  });
 
 const logIn = createAsyncThunk(
   'auth/login',
@@ -29,7 +32,6 @@ const logIn = createAsyncThunk(
       const { data } = await axios.post('user/login', credentials);
       console.log(data);
       token.set(data.token);
-
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -39,7 +41,7 @@ const logIn = createAsyncThunk(
 
 const logOut = createAsyncThunk('user/logout', async () => {
   try {
-    await axios.post('user/logout');
+    await axios.get('user/logout');
     token.unset();
   } catch (error) {
     console.log(error);

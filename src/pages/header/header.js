@@ -6,6 +6,9 @@ import s from './header.module.css';
 import home from './icon_home.svg';
 import library from './icon_library.svg';
 import Info from './info';
+import { authOperations } from '../../redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
 
 const style = {
   position: 'absolute',
@@ -17,21 +20,33 @@ const style = {
 };
 
 const Header = () => {
-  const user = 'Martha Stewart';
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
+  const user = 'Martha Stewart'; //Добавить текущего пользователя
   const userLogo = user[0];
+  const dispatch = useDispatch();
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleExit = () => setOpen(false);
+  const handleExit = () => {
+    dispatch(authOperations.logOut());
+    setOpen(false);
+  };
 
-  const [openInfo, setOpenInfo] = React.useState(true);
+  const [openInfo, setOpenInfo] = React.useState(false);
   const handleCloseInfo = () => setOpenInfo(false);
+
+  useEffect(() => {
+    //проверить массив книг
+    if (isLoggedIn) {
+      setOpenInfo(true);
+    }
+  }, [isLoggedIn]);
 
   const location = useLocation();
   const LINCK_ID = location.pathname;
 
-  const [login, setLogin] = useState(true);
   const [statistic, setStatistic] = useState(false);
 
   useEffect(() => {
@@ -42,56 +57,56 @@ const Header = () => {
     }
   }, [LINCK_ID]);
 
-  useEffect(() => {
-    if (LINCK_ID === ('/' || '/register')) {
-      setLogin(false);
-    } else {
-      setLogin(true);
-    }
-  }, [LINCK_ID]);
-
   return (
     <>
-      <header className={login ? s.header : s.header_l}>
+      <header className={isLoggedIn ? s.header : s.header_l}>
         <Link to="/" className={s.logo}>
           BR
         </Link>
 
-        {/* {login && ( */}
-        <div className={s.blok}>
-          <div className={s.blok_user}>
-            <button className={s.btn_desktop} type="button">
+        {isLoggedIn && (
+          <div className={s.blok}>
+            <div className={s.blok_user}>
+              <button className={s.btn_desktop} type="button">
+                {userLogo}
+              </button>
+              <p className={s.user_name}>{user}</p>
+            </div>
+
+            {statistic && (
+              <nav className={s.nav}>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? s.active_link : s.link
+                  }
+                  to="/"
+                >
+                  <img src={library} alt="library" />
+                </NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? s.active_link : s.link
+                  }
+                  to="/training"
+                >
+                  <img src={home} alt="home" />
+                </NavLink>
+              </nav>
+            )}
+            <div className={s.line}></div>
+
+            <button className={s.button_mobile} type="button">
               {userLogo}
             </button>
-            <p className={s.user_name}>{user}</p>
+            <button
+              className={s.button_exit}
+              type="button"
+              onClick={handleOpen}
+            >
+              Вихід
+            </button>
           </div>
-
-          {/* {statistic && ( */}
-          <nav className={s.nav}>
-            <NavLink
-              className={({ isActive }) => (isActive ? s.active_link : s.link)}
-              to="/library"
-            >
-              <img src={library} alt="library" />
-            </NavLink>
-            <NavLink
-              className={({ isActive }) => (isActive ? s.active_link : s.link)}
-              to="/training"
-            >
-              <img src={home} alt="home" />
-            </NavLink>
-          </nav>
-          {/* )} */}
-          <div className={s.line}></div>
-
-          <button className={s.button_mobile} type="button">
-            {userLogo}
-          </button>
-          <button className={s.button_exit} type="button" onClick={handleOpen}>
-            Вихід
-          </button>
-        </div>
-        {/* )} */}
+        )}
       </header>
 
       <div>

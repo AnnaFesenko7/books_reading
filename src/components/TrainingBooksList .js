@@ -2,8 +2,8 @@ const TrainingBooksList = ({ books, onDelete }) => {
   console.log('arr', books);
   return (
     <ul>
-      {books.map(({ id, title }) => (
-        <li key={id}>
+      {books.map(({ _id, title }) => (
+        <li key={_id}>
           <p>{title}</p>
           <button onClick={() => onDelete(id)}>Удалить</button>
         </li>

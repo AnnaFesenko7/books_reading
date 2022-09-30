@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState }  from 'react';
 import { Link } from 'react-router-dom';
 
 import { Formik } from 'formik';
-import * as yup from 'yup';
+import { registrationValidationSchema } from 'services/yupValidationSchema';
 
-import Media from 'react-media';
-
-import AuthModal from '../../authModal/authModal';
 import RegistrationText from '../../registrationText/registrationText';
 import styles from "../login/login.module.css";
 
@@ -15,34 +12,12 @@ import { useDispatch } from 'react-redux';
 
 
 const Registration = () => {
-    const [modal, setModal] = useState(true);
-
     const dispatch = useDispatch();
-
-    const validationSchema = yup.object().shape({
-        name: yup.string().typeError("Will be a string").min(3).required("Required"),
-        email: yup.string().typeError("Will be a string").min(4).required("Required"),
-        password: yup.string().typeError("Will be a string").min(6).required("Required"),
-        confirmPassword: yup.string().min(6)
-            .oneOf([yup.ref('password')], "Passwords doesn't match").required("Required")
-    });
-
+    const [errName, setErrName] = useState("");
+    const [errEmail, setErrEmail] = useState("");
 
     return ( 
         <>
-            {modal && (
-                <Media queries={{
-                    small: "(max-width: 768px)",
-                    medium: "(min-width: 769px) and (max-width: 1280px)",
-                    large: "(min-width: 1281px)"
-                }} >
-                    {matches => (
-                        <>
-                            {matches.small && <AuthModal />}
-                        </>
-                    )}
-                </Media>
-            )}
             <section className={styles.section}>
                 <div className={styles.registr__form}>   
                     <div className={styles.form__border}>
@@ -53,19 +28,50 @@ const Registration = () => {
                                 password: "",
                                 confirmPassword: ""
                             }}
-                            validationSchema={validationSchema}
-                            onSubmit={({name, email, password}, {resetForm}) => {
-                                console.log(name);
-                                dispatch(authOperations.register({ name, email, password }));
-                                resetForm({values: ""})
+                            validationSchema={registrationValidationSchema}
+                            onSubmit={(values, {resetForm}) => {
+                                const { name, email, password } = values;
+
+                                dispatch(authOperations.register({ name, email, password }))
+                                .then(answer => {
+                                    const { data, response } = answer.payload
+                                    setErrName("");
+                                    setErrEmail("");
+
+                                    if (data) {
+                                        resetForm({ values: "" });
+                                    }
+                                    else if (response) {
+                                        throw response.data.message;
+                                    }
+                                })
+                                .catch(error => {
+                                    switch (error) {
+                                        case "name":
+                                            setErrName("User with this name is already registered")
+                                            return 
+                                        case "email":
+                                            setErrEmail("User with this email is already registered")
+                                            return
+                                        case "name&email":
+                                            setErrName("User with this name is already registered")
+                                            setErrEmail("User with this email is already registered")
+                                            return 
+                                        default:
+                                            return
+                                    }
+                                });
                             }}
                         >
-                        {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
+                            {({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
                         <form onSubmit={handleSubmit}>
                             <a className={styles.google__auth}
                                 href="http://localhost:3001/api/user/google"
-                            >Google</a>
-                            <p className={styles.label__title}>Name</p>
+                                    >Google</a>
+                            <p className={styles.label__title}>
+                                Name
+                                {errName && (<span className={styles.error}>* {errName}</span>)}
+                            </p>
                             <input
                                 className={styles.input}
                                 type="text"
@@ -76,8 +82,12 @@ const Registration = () => {
                                 onChange={handleChange}
                             />
                                 {errors.name && touched.name ?
-                                    (<p className={styles.warning}>{errors.name}</p>) : null}
-                            <p className={styles.label__title}>Email</p>
+                                        (<p className={styles.warning}>{errors.name}</p>)
+                                        : (<span className={styles.default__count}></span>)}
+                            <p className={styles.label__title}>
+                                Email
+                                {errEmail && (<span className={styles.error}>* {errEmail}</span>)}
+                            </p>
                             <input
                                 className={styles.input}
                                 type="email"
@@ -88,7 +98,8 @@ const Registration = () => {
                                 onChange={handleChange}
                             />
                                 {errors.email && touched.email ?
-                                    (<p className={styles.warning}>{errors.email}</p>) : null}
+                                    (<p className={styles.warning}>{errors.email}</p>) :
+                                    (<span className={styles.default__count}></span>)}
                             <p className={styles.label__title}>Password</p>
                             <input
                                 className={styles.input}
@@ -100,7 +111,8 @@ const Registration = () => {
                                 onChange={handleChange}
                             />
                                 {errors.password && touched.password ?
-                                    (<p className={styles.warning}>{errors.password}</p>) : null}
+                                    (<p className={styles.warning}>{errors.password}</p>)
+                                    : (<span className={styles.default__count}></span>)}
                             <p className={styles.label__title}>Confirm password</p>
                             <input
                                 className={styles.input}
@@ -112,14 +124,15 @@ const Registration = () => {
                                 onChange={handleChange}
                             />
                                 {errors.confirmPassword && touched.confirmPassword ?
-                                    (<p className={styles.warning}>{errors.confirmPassword}</p>) : null}
+                                    (<p className={styles.warning}>{errors.confirmPassword}</p>)
+                                    : (<span className={styles.default__count}></span>)}
                                 <button className={styles.form__button} type='submit'>Register</button>
                             </form>
                             )}
                         </Formik>
                         <p className={styles.auth__describe}>
                             Already have an account?
-                            <Link className={styles.auth__link}>Login</Link>
+                            <Link className={styles.auth__link} to="/">Login</Link>
                         </p>
                     </div>
                 </div> 

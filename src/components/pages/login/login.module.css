@@ -5,11 +5,23 @@
 .login__form,
 .registr__form {
     padding: 32px 20px;
+
+    background-image: linear-gradient(
+        to right,
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)),
+        url("../../../img/background1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .form__border {
     display: block;
     text-align: center;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .google__auth {
@@ -39,7 +51,7 @@
 .input {
     padding: 12px 8px;
     min-width: 280px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .form__button {
@@ -59,17 +71,34 @@
     background-color: #c05006;
 }
 
+.error,
 .warning {
     margin: 0;
-    margin-bottom: 8px;
+    margin-left: 5px;
     font-size: 12px;
     text-transform: lowercase;
-    color: rgb(161, 0, 0);
+    color: #F25137;
 }
 
-.auth__describe {
+.warning {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.default__count {
+    display: block;
+    height: 14px;
+    margin-bottom: 10px;
+}
+
+.auth__describe,
+.auth__verify {
     font-size: 13px;
     color: #898F9F;
+}
+
+.auth__verify {
+    text-align: left;
 }
 
 .auth__link {
@@ -77,6 +106,16 @@
     text-align: center;
     font-size: 13px;
     color: #FF6B08;
+}
+
+.button__verify {
+    display: inline-block;
+    color: #FF6B08;
+    background: none;
+    border: none;
+    padding: none;
+    margin: none;
+    cursor: pointer;
 }
 
 /* =============================================== */
@@ -141,7 +180,19 @@
 }
 
 .registration__item {
+    display: inline-flex;
+    align-items: center;
     margin-bottom: 12px;
+    list-style: none;
+}
+
+.registration__item::before {
+    content: "";
+    width: 4px;
+    height: 8px;
+    margin-right: 12px;
+    background-size: contain;
+    background-image: url("../../../img/arrow.svg");
 }
 
 .item__text {
@@ -156,6 +207,11 @@
     .login__form,
     .registr__form {
         padding: 64px 185px;
+
+        background-image: linear-gradient(to right,
+            rgba(9, 30, 63, 0.8),
+            rgba(9, 30, 63, 0.8)),
+        url("../../../img/background2.jpg");
     }
 
     .form__border {
@@ -171,12 +227,17 @@
     .input {
         padding: 12px 12px;
         min-width: 320px;
-        margin-bottom: 32px;
     }
 
     .form__button {
         min-width: 320px;
     }
+
+    .warning,
+    .default__count {
+        margin-bottom: 22px;
+    }
+
 
     /* ===============================================  */
     .log__text {
@@ -219,12 +280,20 @@
         display: flex;
     }
 
+    .login__form,
+    .registr__form {
+        background-image: linear-gradient(to right,
+            rgba(9, 30, 63, 0.8),
+            rgba(9, 30, 63, 0.8)),
+        url("../../../img/background3.jpg");
+    }
+
     .login__form {
-        padding: 185px 75px 0;
+        padding: 185px 75px 175px;
     }
 
     .registr__form {
-        padding: 90px 75px 0;
+        padding: 90px 75px;
     }
 
     .log__text {
@@ -234,6 +303,27 @@
     .registration__text {
         padding: 180px 128px 0px;
     }
+}
 
+.label_password {
+position: relative;
+}
 
+.svg__eyeOffCont{
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    stroke: #898F9F;
+}
+
+.svg__eyeOffCont:hover,
+.svg__eyeOffCont:focus {
+    cursor: pointer;
+    stroke: #FF6B08;
+}
+
+.svg__eyeOff {
+    width: 20px;
+    height: 20px;
+    stroke: inherit;
 }
