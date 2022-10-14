@@ -1,34 +1,20 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-ol,
-p,
-ul {
-    padding: 0;
-    margin: 0;
-}
-
-
 .myGoalMainBox {
     width: 280px;
-    margin: 0;
-    margin-bottom: 30px;
+    margin-top: 20px;
+
     background-color: white;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-    
+
 }
 
 @media screen and (min-width: 768px) {
     .myGoalMainBox {
+        margin: 20px 0 0 0;
         width: 704px;
         height: 105px;
         display: flex;
         align-items: center;
-        margin-bottom: 40px;
+
         box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
     }
 }
@@ -38,12 +24,45 @@ ul {
         width: 288px;
         height: 304px;
         display: block;
+        margin-top: 46px;
         box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     }
 }
 
+.myGoalMainBox_training {
+    width: 280px;
+    margin: 0 auto;
+    background-color: #f6f7fb;
+    /* margin-top: 40px; */
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    .myGoalMainBox_training {
+    margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .myGoalMainBox_training {
+        display: flex;
+        background: white;
+        width: 704px;
+        height: 125px;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .myGoalMainBox_training {
+        display: block;
+        width: 288px;
+        margin-top: 40px;
+    }
+}
+
 .myGoalHeadingBox {
-    padding: 18px 34px;
+    padding: 18px 30px;
     background-color: #B1B5C2;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 }
@@ -53,6 +72,7 @@ ul {
         width: 275px;
         height: 60px;
         margin-left: 28px;
+        padding: 18px 27px;
     }
 }
 
@@ -63,7 +83,29 @@ ul {
     }
 }
 
+.myGoalHeadingBox_training {
+    padding: 18px 29px;
+    background-color: #b1b5c2;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+    .myGoalHeadingBox_training {
+        height: 60px;
+        margin-top: 20px;
+        margin-left: 42px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .myGoalHeadingBox_training {
+        width: 100%;
+        margin: 0;
+    }
+}
+
 .myGoalHeading {
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-weight: 600;
     font-size: 20px;
@@ -94,6 +136,29 @@ ul {
     }
 }
 
+.statsBox_traning {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 161px;
+    background-color: white;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+    .statsBox_traning {
+        height: 125px;
+        box-shadow: none;
+        margin-left: auto;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .statsBox_traning {
+        height: 269px;
+    }
+}
+
 .myGoalStatsList {
     display: flex;
     justify-content: center;
@@ -109,11 +174,25 @@ ul {
 
 @media screen and (min-width: 1280px) {
     .myGoalStatsList {
-        margin: 0%;
+        margin: 0;
     }
 }
 
-.myGoalStatsListItem {
+.myGoalStatsList_training {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .myGoalStatsList_training {
+        margin-right: 30px;
+        margin-left: 19px;
+    }
+}
+
+.myGoalStatsListItem,
+.myGoalStatsListItem_training {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,6 +216,23 @@ ul {
     .myGoalStatsListItem {
         margin-bottom: 0px;
     }
+
+    .myGoalStatsListItem:last-child {
+        margin-left: 20px;
+    }
+}
+
+
+@media screen and (max-width: 1279px) {
+    .myGoalStatsListItem_training:not(:last-child) {
+        margin-right: 12px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .myGoalStatsListItem_training:not(:last-child) {
+    margin-right: 20px;
+    }
 }
 
 .myGoalStatsDigitBox {
@@ -149,7 +245,6 @@ ul {
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
 }
 
-
 @media screen and (min-width: 768px) {
     .myGoalStatsDigitBox {
         height: 60px;
@@ -160,6 +255,29 @@ ul {
     .myGoalStatsDigitBox {
         width: 100px;
         height: 100px;
+    }
+}
+
+.myGoalStatsDigitBox_training {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+    background: #f5f7fa;
+    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+
+@media screen and (min-width: 768px) {
+    .myGoalStatsDigitBox_training {
+        width: 100px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .myGoalStatsDigitBox_training {
+        width: 66px;
+        height: 66px;
     }
 }
 
@@ -184,8 +302,26 @@ ul {
     }
 }
 
+.myGoalStatsDigit_training {
+    font-family: Open Sans;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.05;
+    color: #091e3f;
+    text-align: center;
+}
+
+.myGoalStatsDigit_training_accent {
+    font-family: Open Sans;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.05;
+    color: #ff6b08;
+    text-align: center;
+}
+
 .myGoalStatsText {
-    font-family: Montserrat;
+    font-family: 'Montserrat';
     font-weight: 500;
     font-size: 14px;
     line-height: 1.2;
@@ -193,6 +329,16 @@ ul {
     color: #898f9f;
     margin-top: 14px;
     max-width: 66px;
+}
+
+@media screen and (min-width: 320px) {
+    .myGoalStatsText {
+        display: flex;
+        justify-content: center;
+        margin-top: 8px;
+        font-size: 11px;
+        line-height: 1.18;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -206,9 +352,12 @@ ul {
 
 @media screen and (min-width: 1280px) {
     .myGoalStatsText {
-        font-size: 14px;
-        line-height: 1.2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-top: 14px;
-        max-width: 66px;
+        font-size: 12px;
+        line-height: 1.25;
+        text-align: center;
     }
 }

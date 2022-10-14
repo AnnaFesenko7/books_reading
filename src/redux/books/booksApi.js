@@ -6,9 +6,6 @@ export const booksApi = createApi({
     baseUrl: 'https://booker-back-end.herokuapp.com/api/books',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
-
-      // console.log('TOKEN', token);
-
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
@@ -26,7 +23,7 @@ export const booksApi = createApi({
       providesTags: ['Books'],
     }),
     addBook: builder.mutation({
-      query: ({ title, author,year,pages }) => ({
+      query: ({ title, author, year, pages }) => ({
         url: '/',
         method: 'POST',
         body: { title: title, author: author, year: year, pages: pages },
@@ -40,15 +37,20 @@ export const booksApi = createApi({
       }),
       invalidatesTags: ['Books'],
     }),
+    updateBookResume: builder.mutation({
+      query: ({ id, resume, rating }) => ({
+        url: `/resume/${id}`,
+        method: 'PUT',
+        body: { resume, rating },
+      }),
+      invalidatesTags: ['Books'],
+    }),
   }),
 });
-
-
-
-
 
 export const {
   useGetAllBooksQuery,
   useAddBookMutation,
   useDeleteBookMutation,
+  useUpdateBookResumeMutation,
 } = booksApi;

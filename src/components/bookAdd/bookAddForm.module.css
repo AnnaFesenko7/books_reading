@@ -1,19 +1,91 @@
+.backBtn {
+  display: none;
+}
+.formCont {
+  padding-top: 20px;
+}
 @media screen and (min-width: 320px) and (max-width: 767px) {
+  .backBtn {
+    display: block;
+    width: 25px;
+    height: 15px;
+    margin-bottom: 32px;
+  }
+  .formCont {
+    width: 100%;
+    height: 100%;
+    z-index: 120;
+    background: #f6f7fb;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
   .form {
-    width: calc(100% - 2 * 20px);
+    background: #f6f7fb;
+    width: 280px;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
     /* justify-content: center; */
   }
-  .label {
-    margin-bottom: 45px;
+  .labelTitle,
+  .labelAuthor,
+  .labelDate {
+    margin-bottom: 20px;
+  }
+  .labelPages {
+    margin-bottom: 40px;
+  }
+  .inputTitle,
+  .inputAuthor,
+  .inputDate,
+  .inputPages {
+    width: 280px;
+  }
+  .btn {
+    margin: 0 auto;
+    display: block;
   }
 
-  .label:last-child {
+  .formHidden {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .form {
+    max-width: 768px;
+    width: 100%;
     margin-bottom: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .wrapper {
+    width: 704px;
+    display: flex;
+  }
+  .labelTitle {
+    /* max-width: 768px; */
+    width: 704px;
+    margin-bottom: 0px;
+    /* margin-bottom: 24px; */
+    height: 100px;
+  }
+  .labelAuthor {
+    width: 336px;
+    margin-right: 32px;
+    height: 120px;
+  }
+  .labelDate {
+    width: 152px;
+    margin: auto 32px auto 0;
+    height: 120px;
+  }
+  .labelPages {
+    width: 152px;
+    height: 120px;
   }
   .inputTitle,
   .inputAuthor,
@@ -22,69 +94,62 @@
     width: 100%;
   }
   .btn {
-    margin: 0 auto;
+    margin: 10px auto 0 auto;
     display: block;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1199px) {
+@media screen and (min-width: 1280px) {
   .form {
-    width: 704px;
-    margin-bottom: 40px;
-  }
-  .inputTitle {
-    width: 704px;
-    margin-bottom: 24px;
-  }
-  .inputAuthor {
-    width: 336px;
-    margin-right: 32px;
-  }
-  .inputDate {
-    width: 152px;
-    margin-right: 32px;
-  }
-  .inputPages {
-    width: 152px;
-  }
-  .btn {
-    margin: 40px auto 0 auto;
-    display: block;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .form {
+    max-width: 1280px;
     display: flex;
     justify-content: flex-start;
-    width: calc(100% - 2 * 16px);
-    margin-bottom: 80px;
+    width: 100%;
+    margin-bottom: 50px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
-  .inputTitle {
-    width: 346px;
+  .wrapper {
+    display: flex;
+  }
+  .labelTitle {
+    width: 350px;
     margin-right: 16px;
+    height: 100px;
   }
-  .inputAuthor {
+  .labelAuthor {
     width: 250px;
     margin-right: 16px;
+    height: 100px;
   }
-  .inputDate {
-    width: 134px;
+  .labelDate {
+    width: 145px;
     margin-right: 16px;
+    height: 100px;
   }
-  .inputPages {
-    width: 134px;
+  .labelPages {
+    width: 145px;
     margin-right: 48px;
+    height: 100px;
+  }
+  .inputTitle,
+  .inputAuthor,
+  .inputDate,
+  .inputPages {
+    width: 100%;
   }
   .btn {
-    margin: auto 0 0 0;
+    margin: 25px 0 auto 0;
   }
 }
-.form {
+/* .form {
   margin-left: auto;
   margin-right: auto;
-}
-.label {
+} */
+.labelTitle,
+.labelAuthor,
+.labelDate,
+.labelPages {
   display: inline-block;
   font-family: 'Montserrat';
   font-style: normal;
@@ -101,14 +166,9 @@
   box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
   margin-top: 8px;
   height: 42px;
+  padding-left: 10px;
 }
-.inputAuthor {
-  display: block;
-  background: #f6f7fb;
-  border: 1px solid #a6abb9;
-  margin-top: 8px;
-  height: 42px;
-}
+.inputAuthor,
 .inputDate,
 .inputPages {
   display: block;
@@ -116,8 +176,8 @@
   border: 1px solid #a6abb9;
   margin-top: 8px;
   height: 42px;
+  padding-left: 10px;
 }
-
 .btn {
   font-family: 'Montserrat';
   font-style: normal;
@@ -129,4 +189,18 @@
   height: 42px;
   background: #f6f7fb;
   border: 1px solid #242a37;
+  cursor: pointer;
+  padding: 0;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn:hover {
+  border: 1px solid #f25137;
+}
+.message {
+  margin-top: 5px;
+}
+.spinner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

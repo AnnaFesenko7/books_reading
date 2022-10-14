@@ -1,3 +1,8 @@
+.main_wrapper {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+}
+
 .text_style{
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
@@ -19,15 +24,16 @@
     width: 320px;
     margin-right: auto;
     margin-left: auto;
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     padding-left: 20px;
     padding-right: 20px;
-   
+
 }
 
-.header_l { 
+.header_l {
     composes: header;
-    justify-content: center;
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
 }
 
 .logo{
@@ -67,20 +73,65 @@
 
 }
 
+ @media screen and (max-width: 480px) {
+    .button_mobile {
+        margin-left: 5px;
+        margin-right: 5px;
+    width: 25px;
+height: 25px;}
+
+
+ }
+
+
+
 .blok_user {
     display: none;
 
 }
 
 .button_exit{
-    border: none;
-    border-bottom: 1px solid #242A37 ;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 0;
-    composes: text_style;
-
+  width: 55px;
+  border: transparent;
+  border-bottom: 1px solid #242A37;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  composes: text_style;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.button_exit:hover {
+    color:#FF6B08;
+    border-bottom: 1px solid #FF6B08;
+}
+
+.button_exitIcon {
+    display: none;
+}
+
+ @media screen and (max-width: 480px) {
+.button_exit {
+    display: none;
+}
+
+.button_exitIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        background-color: transparent;
+            cursor: pointer;
+            padding: 0;
+            border: none;
+}
+
+.exitIcon {
+    fill: #A6ABB9;
+}
+
+ }
+
+
 
 .nav{
     display: flex;
@@ -98,13 +149,40 @@
     width: 33px;
     height: 33px;
     margin-right: 5px;
-    background-color: #F5F7FA;
     border-radius: 50%;
+}
+
+ @media screen and (max-width: 480px) {
+    .link {
+        width: 25px;
+            height: 25px;
+     }
+
+ }
+
+.link:hover {
+    background-color: #F5F7FA;
 }
 
 .active_link {
     composes: link;
-    background-color: transparent;
+display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33px;
+    height: 33px;
+    margin-right: 5px;
+    background-color: #F5F7FA;
+    border-radius: 50%;
+
+
+
+
+background-color: #E0E5EB;
+
+
+
+    /* background-color: transparent; */
 }
 
 .line{
@@ -121,7 +199,7 @@
     padding-top: 48px;
     padding-left: 22px;
     padding-right: 22px;
-    
+    box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 }
 
 .modal_text{
@@ -144,10 +222,8 @@
     display: block;
     justify-content: space-evenly;
     border-radius: 0%;
-    background-color: transparent;
     width: 98px;
     height: 40px;
-    color: #242A37;
     cursor: pointer;
     font-family: 'Montserrat';
     font-style: normal;
@@ -156,9 +232,30 @@
     line-height: 1.21;
 }
 
-.btn_modal button:hover, 
-.btn_modal button:focus, 
-.btn_info:hover, 
+.btn_modal_cancel {
+  color: #242A37;
+  background-color: transparent;
+  border: 1px solid #242A37;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn_modal_cancel:hover {
+  border: 1px solid #F25137;
+}
+
+.btn_modal_exit {
+  color: #FFFFFF;
+  background-color: #FF6B08;
+  border-color: transparent;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn_modal_exit:hover {
+  background-color: #D15807;
+}
+
+.btn_info:hover,
 .btn_info:focus{
     color: #ffffff;
     background-color: #FF6B08;
@@ -189,6 +286,16 @@ border-radius: 0%;
 
 /* ** MEDIA ** */
 
+@media screen and (min-width: 350px) {
+    .header {
+        width: 350px;
+    }
+
+    .header_l {
+        width: 350px;
+    }
+}
+
 @media screen and (min-width: 480px) {
     .header {
         width: 480px;
@@ -206,9 +313,11 @@ border-radius: 0%;
         padding-left: 32px;
         padding-right: 32px;
     }
-    .header_l{
+    .header_l {
         composes: header;
     }
+
+
     .button_mobile{
         display: none;
     }
@@ -226,12 +335,12 @@ border-radius: 0%;
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
     .header {
-        width: 1200px;
+        width: 1280px;
         padding-left: 16px;
         padding-right: 16px;
-               
+
         }
     .header_l {
         composes: header;
@@ -240,3 +349,4 @@ border-radius: 0%;
         width: 572px;
     }
 }
+
