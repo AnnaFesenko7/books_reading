@@ -4,11 +4,9 @@ import { Header } from 'components/Header/Header';
 
 export const Layout = () => {
   return (
-    <>
-      <StyledContainer>
-        <Header />
-        <Outlet />
-      </StyledContainer>
-    </>
+    <StyledContainer>
+      <Header />
+      <Outlet />
+    </StyledContainer>
   );
 };
