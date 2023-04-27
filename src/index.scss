@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: #F6F7FB;
+  background-color: #f6f7fb;
 }
 
 * {
@@ -52,26 +52,26 @@ ol {
 }
 
 .main_container {
-  /* margin-left: auto;
-  margin-right: auto;  */
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: 768px) {
-    body {
-      overflow-x: hidden;
-    }
-    /*max-width: 768px; */
+    // body {
+    //   overflow-x: hidden;
+    // }
+    max-width: 768px;
   }
 
   @media screen and (min-width: 1280px) {
-    body {
-      overflow-x: hidden;
-    }
-    /*max-width: 1280px; */
-  } 
+    // body {
+    //   overflow-x: hidden;
+    // }
+    max-width: 1280px;
+  }
 }
 
 .MuiAutocomplete-popper.MuiPopperUnstyled-root .MuiAutocomplete-option {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14;
   line-height: 1.21;
