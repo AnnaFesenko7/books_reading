@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Box, Tooltip } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import LangSwitch from 'components/langSwitch/langSwitch';
-
+import { StyledHeader } from './Header.styled';
 import icons from './exit.svg';
 import s from './Header.module.css';
 import home from '../../img/icon_home.svg';
@@ -12,6 +12,7 @@ import { authOperations } from '../../redux/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
 import { useTranslation } from 'react-i18next';
+import { InfoModal } from 'components/InfoModal/InfoModal';
 
 const style = {
   position: 'absolute',
@@ -26,25 +27,15 @@ const style = {
 export const Header = () => {
   const isLoggedIn = true;
   const isLoggedInName = 'Anna';
-
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   // const isLoggedInName = useSelector(authSelectors.getUsername);
-  const googleAvatar = useSelector(authSelectors.getGoogleAvatar);
 
   const [user, setUser] = useState(isLoggedInName);
-
-  useEffect(() => {
-    if (!user || user !== isLoggedInName) {
-      setUser(isLoggedInName);
-    }
-  });
 
   const { t, i18n } = useTranslation();
   const changeLanguage = language => {
     i18n.changeLanguage(language);
   };
-
-  // console.log('USER', user, 'googleAvatar', );
 
   const userLogo = user ? user[0] : 'U';
   const dispatch = useDispatch();
@@ -56,6 +47,16 @@ export const Header = () => {
     dispatch(authOperations.logOut());
     setOpen(false);
   };
+
+  const [openInfo, setOpenInfo] = React.useState(false);
+  const handleCloseInfo = () => setOpenInfo(false);
+
+  useEffect(() => {
+    //проверить массив книг
+    if (isLoggedIn) {
+      setOpenInfo(true);
+    }
+  }, [isLoggedIn]);
 
   const location = useLocation();
   const LINCK_ID = location.pathname;
@@ -71,14 +72,13 @@ export const Header = () => {
   }, [LINCK_ID]);
 
   return (
-    <div className={s.main_wrapper}>
+    <>
       {/* кнопки не удалял, чтобы можно было на формулы посмотреть
-
+      
       <button onClick={() => changeLanguage('en')}>EN</button>
       <button onClick={() => changeLanguage('ua')}>UA</button>
       <div> {t('text')} </div> */}
-
-      <header className={s.header}>
+      <StyledHeader>
         <Link to="/" className={s.logo}>
           BR
         </Link>
@@ -97,26 +97,20 @@ export const Header = () => {
             {statistic && (
               <nav className={s.nav}>
                 <NavLink
-                  to="/"
-                  end
                   className={({ isActive }) =>
                     isActive ? s.active_link : s.link
                   }
+                  to="/"
                 >
-                  <Tooltip title={t('library')}>
-                    <img src={library} alt="library" />
-                  </Tooltip>
+                  <img src={library} alt="library" />
                 </NavLink>
-
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? s.active_link : s.link
                   }
-                  to="training"
+                  to="/training"
                 >
-                  <Tooltip title={t('training')}>
-                    <img src={home} alt="home" />
-                  </Tooltip>
+                  <img src={home} alt="home" />
                 </NavLink>
               </nav>
             )}
@@ -130,55 +124,47 @@ export const Header = () => {
               type="button"
               onClick={handleOpen}
             >
-              {t('logout')}
-            </button>
-
-            <button
-              className={s.button_exitIcon}
-              type="button"
-              onClick={handleOpen}
-            >
-              <svg width={24} height={24} className={s.exitIcon}>
-                <use href={`${icons}#icon-exit`}></use>
-              </svg>
+              Вихід
             </button>
           </div>
         )}
-      </header>
-
+      </StyledHeader>
       <div>
         <Modal
           open={open}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
-          style={{
-            backgroundColor: 'rgba(43, 43, 43, 0.1)',
-            outline: 0,
-            '&:focus': { outline: 'none' },
-          }}
         >
           <Box sx={style} className={s.modal}>
-            <p className={s.modal_text}>{t('modal1_notification')}</p>
+            <p className={s.modal_text}>
+              Якщо Ви вийдете з програми незбережені дані будуть втрачені
+            </p>
             <div className={s.btn_modal}>
-              <button
-                className={s.btn_modal_cancel}
-                type="button"
-                onClick={handleClose}
-              >
-                {t('btnCancel')}
+              <button type="button" onClick={handleClose}>
+                Відміна
               </button>
-              <button
-                className={s.btn_modal_exit}
-                type="button"
-                onClick={handleExit}
-              >
-                {t('btnLeave')}
+              <button type="button" onClick={handleExit}>
+                Вийти
               </button>
             </div>
           </Box>
         </Modal>
       </div>
-    </div>
+      <div>
+        <Modal open={openInfo} onClose={handleCloseInfo}>
+          <Box sx={style} className={s.modalInfo}>
+            <InfoModal />
+            <button
+              className={s.btn_info}
+              type="button"
+              onClick={handleCloseInfo}
+            >
+              Ok
+            </button>
+          </Box>
+        </Modal>
+      </div>
+    </>
   );
 };

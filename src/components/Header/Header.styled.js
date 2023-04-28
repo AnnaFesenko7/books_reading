@@ -1,0 +1,344 @@
+import styled from '@emotion/styled';
+
+// .main_wrapper {
+//   background-color: #ffffff;
+//   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+// }
+
+// .text_style {
+//   font-family: 'Montserrat', sans-serif;
+//   font-style: normal;
+//   font-weight: 300;
+//   font-size: 14px;
+//   line-height: 1.21;
+//   color: #242a37;
+// }
+export const StyledHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  font-family: 'Abril Fatface', cursive;
+  margin: 0;
+  padding-top: 14px;
+  padding-bottom: 13px;
+  width: 320px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+`;
+/* 
+  
+  
+  ;
+   */
+
+/* 
+.header_l {
+  composes: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+// .logo {
+//   text-align: center;
+//   color: #242a37;
+//   margin-top: 0;
+//   margin-bottom: 0;
+//   font-weight: 400;
+//   font-size: 20px;
+//   line-height: 1.35;
+//   text-decoration: none;
+// }
+
+// .blok {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .button_mobile,
+// .btn_desktop {
+//   background-color: #f5f7fa;
+//   display: block;
+//   width: 33px;
+//   height: 33px;
+//   border-radius: 50%;
+//   border: none;
+//   padding: 0;
+//   margin: 0;
+//   cursor: pointer;
+//   margin-right: 14px;
+//   margin-left: 14px;
+//   font-family: 'Montserrat', sans-serif;
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size: 14px;
+//   line-height: 17px;
+//   color: #242a37;
+// }
+
+// @media screen and (max-width: 480px) {
+//   .button_mobile {
+//     margin-left: 5px;
+//     margin-right: 5px;
+//     width: 25px;
+//     height: 25px;
+//   }
+// }
+
+// .blok_user {
+//   display: none;
+// }
+
+// .button_exit {
+//   width: 55px;
+//   border: transparent;
+//   border-bottom: 1px solid #242a37;
+//   background-color: transparent;
+//   cursor: pointer;
+//   padding: 0;
+//   composes: text_style;
+//   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+//     border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
+
+// .button_exit:hover {
+//   color: #ff6b08;
+//   border-bottom: 1px solid #ff6b08;
+// }
+
+// .button_exitIcon {
+//   display: none;
+// }
+
+// @media screen and (max-width: 480px) {
+//   .button_exit {
+//     display: none;
+//   }
+
+//   .button_exitIcon {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     background-color: transparent;
+//     cursor: pointer;
+//     padding: 0;
+//     border: none;
+//   }
+
+//   .exitIcon {
+//     fill: #a6abb9;
+//   }
+// }
+
+// .nav {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .nav .link + .link {
+//   margin-left: 5px;
+// }
+
+// .link {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 33px;
+//   height: 33px;
+//   margin-right: 5px;
+//   border-radius: 50%;
+// }
+
+// @media screen and (max-width: 480px) {
+//   .link {
+//     width: 25px;
+//     height: 25px;
+//   }
+// }
+
+// .link:hover {
+//   background-color: #f5f7fa;
+// }
+
+// .active_link {
+//   composes: link;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 33px;
+//   height: 33px;
+//   margin-right: 5px;
+//   background-color: #f5f7fa;
+//   border-radius: 50%;
+
+//   background-color: #e0e5eb;
+
+//   /* background-color: transparent; */
+// }
+
+// .line {
+//   display: block;
+//   width: 1px;
+//   height: 33px;
+//   background-color: #e0e5eb;
+// }
+
+// /* ** MODAL ** */
+
+// .modal {
+//   padding-bottom: 48px;
+//   padding-top: 48px;
+//   padding-left: 22px;
+//   padding-right: 22px;
+//   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
+// }
+
+// .modal_text {
+//   font-family: 'Montserrat';
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 16px;
+//   line-height: 1.38;
+//   text-align: center;
+//   margin: 0 0 20px 0;
+//   color: #242a37;
+// }
+
+// .btn_modal {
+//   display: flex;
+//   justify-content: space-evenly;
+// }
+
+// .btn_modal button {
+//   display: block;
+//   justify-content: space-evenly;
+//   border-radius: 0%;
+//   width: 98px;
+//   height: 40px;
+//   cursor: pointer;
+//   font-family: 'Montserrat';
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 14px;
+//   line-height: 1.21;
+// }
+
+// .btn_modal_cancel {
+//   color: #242a37;
+//   background-color: transparent;
+//   border: 1px solid #242a37;
+//   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
+
+// .btn_modal_cancel:hover {
+//   border: 1px solid #f25137;
+// }
+
+// .btn_modal_exit {
+//   color: #ffffff;
+//   background-color: #ff6b08;
+//   border-color: transparent;
+//   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
+
+// .btn_modal_exit:hover {
+//   background-color: #d15807;
+// }
+
+// .btn_info:hover,
+// .btn_info:focus {
+//   color: #ffffff;
+//   background-color: #ff6b08;
+//   border: none;
+//   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+// }
+
+// .modalInfo {
+//   padding-top: 43px;
+//   padding-left: 20px;
+//   padding-right: 20px;
+//   padding-bottom: 36px;
+// }
+
+// .btn_info {
+//   display: block;
+//   width: 127px;
+//   height: 40px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   border-radius: 0%;
+//   background-color: transparent;
+// }
+// .nav img {
+//   display: block;
+//   margin-right: 0;
+// }
+
+// /* ** MEDIA ** */
+
+// @media screen and (min-width: 350px) {
+//   .header {
+//     width: 350px;
+//   }
+
+//   .header_l {
+//     width: 350px;
+//   }
+// }
+
+// @media screen and (min-width: 480px) {
+//   .header {
+//     width: 480px;
+//   }
+//   .header_l {
+//     width: 480px;
+//   }
+// }
+
+// @media screen and (min-width: 768px) {
+//   .header {
+//     width: 768px;
+//     padding-top: 14px;
+//     padding-bottom: 13px;
+//     padding-left: 32px;
+//     padding-right: 32px;
+//   }
+//   .header_l {
+//     composes: header;
+//   }
+
+//   .button_mobile {
+//     display: none;
+//   }
+//   .blok_user {
+//     display: flex;
+//     align-items: center;
+//     width: 300px;
+//   }
+//   .button_exit {
+//     margin-left: 8px;
+//   }
+//   .user_name {
+//     composes: text_style;
+//     margin: 0;
+//   }
+// }
+
+// @media screen and (min-width: 1280px) {
+//   .header {
+//     width: 1280px;
+//     padding-left: 16px;
+//     padding-right: 16px;
+//   }
+//   .header_l {
+//     composes: header;
+//   }
+//   .blok_user {
+//     width: 572px;
+//   }
+// }
