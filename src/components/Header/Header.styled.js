@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 // .main_wrapper {
 //   background-color: #ffffff;
@@ -6,8 +6,8 @@ import styled from '@emotion/styled';
 // }
 
 // .text_style {
-//   font-family: 'Montserrat', sans-serif;
-//   font-style: normal;
+//
+//
 //   font-weight: 300;
 //   font-size: 14px;
 //   line-height: 1.21;
@@ -17,31 +17,25 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
-  font-family: 'Abril Fatface', cursive;
+  background-color: ${p => p.theme.colors.whit};
   margin: 0;
   padding-top: 14px;
   padding-bottom: 13px;
-  width: 320px;
   margin-right: auto;
   margin-left: auto;
   padding-left: 16px;
   padding-right: 16px;
   width: 100%;
+
+  a {
+    font-family: 'Abril Fatface', cursive;
+  }
 `;
 /* 
   
   
   ;
    */
-
-/* 
-.header_l {
-  composes: header;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
 
 // .logo {
 //   text-align: center;

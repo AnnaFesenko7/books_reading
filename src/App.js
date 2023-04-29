@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Notify } from 'notiflix';
-
+import { GlobalStyle } from './GlobalStyle';
 import { Layout } from 'components/Layout/Layout';
 // import LoginPage from './pages/login/loginPage';
 // import RegistrationPage from './pages/registration/registrationPage';
@@ -67,6 +67,7 @@ function App() {
 
           <Route path="*" element={<p>There is nothing here: 404!</p>} />
         </Routes>
+        <GlobalStyle />
       </Suspense>
     </>
   );

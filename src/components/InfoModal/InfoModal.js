@@ -1,37 +1,31 @@
 import React, { Component } from 'react';
-import s from './info.module.css';
-import library from './icon_library.svg';
-import flag from './icon_flag.svg';
-import vector from './icon_vector.svg';
+import { FaBookOpen, FaFlag, FaHome } from 'react-icons/fa';
+import { InfoModalItem } from './InfoModalItem';
+import { Wrapper } from './InfoModule.styled';
+
+const modalContent = [
+  {
+    step: 1,
+    icon: FaBookOpen,
+    title: 'Створіть особисту бібліотеку',
+    text: 'Додайте до неї книжки, які маєте намір прочитати.',
+  },
+  {
+    step: 2,
+    icon: FaFlag,
+    title: 'Сформуйте своє перше тренування',
+    text: 'Визначте ціль, оберіть період, розпочинайте тренування.',
+  },
+];
 
 export const InfoModal = () => {
   return (
-    <div>
-      <div className={s.blok_info}>
-        <div>
-          <h2 className={s.title}>Крок 1.</h2>
-          <h3 className={s.subtitle}>
-            <img src={library} alt="library" />
-            Створіть особисту бібліотеку
-          </h3>
-          <p className={s.text}>
-            <img src={vector} alt="vector" />
-            Додайте до неї книжки, які маєте намір прочитати.
-          </p>
-        </div>
-
-        <div>
-          <h2 className={s.title}>Крок 2.</h2>
-          <h3 className={s.subtitle}>
-            <img src={flag} alt="flag" />
-            Сформуйте своє перше тренування
-          </h3>
-          <p className={s.text}>
-            <img src={vector} alt="vector" />
-            Визначте ціль, оберіть період, розпочинайте тренування.
-          </p>
-        </div>
-      </div>
-    </div>
+    <Wrapper>
+      {modalContent.map((item, index) => (
+        <li key={index}>
+          <InfoModalItem item={item} />
+        </li>
+      ))}
+    </Wrapper>
   );
 };

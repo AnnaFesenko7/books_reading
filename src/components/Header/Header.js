@@ -4,7 +4,7 @@ import { Box, Tooltip } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import LangSwitch from 'components/langSwitch/langSwitch';
 import { StyledHeader } from './Header.styled';
-import icons from './exit.svg';
+// import icons from './exit.svg';
 import s from './Header.module.css';
 import home from '../../img/icon_home.svg';
 import library from '../../img/icon_library.svg';
@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
 import { useTranslation } from 'react-i18next';
 import { InfoModal } from 'components/InfoModal/InfoModal';
-
+import { StyledButton } from 'components/StyledButton/StyledButton.styled';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -155,13 +155,9 @@ export const Header = () => {
         <Modal open={openInfo} onClose={handleCloseInfo}>
           <Box sx={style} className={s.modalInfo}>
             <InfoModal />
-            <button
-              className={s.btn_info}
-              type="button"
-              onClick={handleCloseInfo}
-            >
-              Ok
-            </button>
+            <StyledButton type="button" onClick={handleCloseInfo}>
+              OK
+            </StyledButton>
           </Box>
         </Modal>
       </div>

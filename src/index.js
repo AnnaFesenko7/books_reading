@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider } from '@emotion/react';
+// import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from 'styled-components';
 
 import { BrowserRouter } from 'react-router-dom';
 import { store } from './redux/store';
@@ -27,9 +28,9 @@ root.render(
     <BrowserRouter basename="/books_reading">
       <Provider store={store}>
         <Suspense fallback={<div>Loading...</div>}>
-          {/* <ThemeProvider theme={theme}> */}
-          <App />
-          {/* </ThemeProvider> */}
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </Suspense>
       </Provider>
     </BrowserRouter>
