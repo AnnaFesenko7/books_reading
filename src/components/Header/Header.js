@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Box, Tooltip } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import LangSwitch from 'components/langSwitch/langSwitch';
-import { StyledHeader } from './Header.styled';
-// import icons from './exit.svg';
+import { FaBookOpen, FaHome } from 'react-icons/fa';
+import { CustomeLink } from 'components/CustomLink/CustomLink';
 import s from './Header.module.css';
-import home from '../../img/icon_home.svg';
-import library from '../../img/icon_library.svg';
+
 import { authOperations } from '../../redux/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
 import { useTranslation } from 'react-i18next';
-import { InfoModal } from 'components/InfoModal/InfoModal';
-import { StyledButton } from 'components/StyledButton/StyledButton.styled';
+
+import {
+  StyledHeader,
+  LogoLink,
+  StyledNav,
+  ExitButton,
+  PrivateHeader,
+} from './Header.styled';
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -73,62 +79,31 @@ export const Header = () => {
 
   return (
     <>
-      {/* кнопки не удалял, чтобы можно было на формулы посмотреть
-      
-      <button onClick={() => changeLanguage('en')}>EN</button>
-      <button onClick={() => changeLanguage('ua')}>UA</button>
-      <div> {t('text')} </div> */}
       <StyledHeader>
-        <Link to="/" className={s.logo}>
-          BR
-        </Link>
+        <LogoLink to="/">BR</LogoLink>
 
         <LangSwitch onChangeLanguage={changeLanguage} />
 
         {isLoggedIn && (
-          <div className={s.blok}>
-            <div className={s.blok_user}>
-              <button className={s.btn_desktop} type="button">
-                {isLoggedIn && userLogo}
-              </button>
+          <PrivateHeader>
+            <StyledNav>
+              <CustomeLink to="/">{isLoggedIn && userLogo}</CustomeLink>
               <p className={s.user_name}>{isLoggedIn && user}</p>
-            </div>
+            </StyledNav>
 
             {statistic && (
-              <nav className={s.nav}>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? s.active_link : s.link
-                  }
-                  to="/"
-                >
-                  <img src={library} alt="library" />
-                </NavLink>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? s.active_link : s.link
-                  }
-                  to="/training"
-                >
-                  <img src={home} alt="home" />
-                </NavLink>
-              </nav>
+              <StyledNav>
+                <CustomeLink icon={FaBookOpen} to="/" />
+                <CustomeLink icon={FaHome} to="/training" />
+                <ExitButton type="button" onClick={handleOpen}>
+                  {'Вихід'}
+                </ExitButton>
+              </StyledNav>
             )}
-            <div className={s.line}></div>
-
-            <button className={s.button_mobile} type="button">
-              {userLogo}
-            </button>
-            <button
-              className={s.button_exit}
-              type="button"
-              onClick={handleOpen}
-            >
-              Вихід
-            </button>
-          </div>
+          </PrivateHeader>
         )}
       </StyledHeader>
+
       <div>
         <Modal
           open={open}
@@ -151,16 +126,13 @@ export const Header = () => {
           </Box>
         </Modal>
       </div>
-      <div>
+      {/* <div>
         <Modal open={openInfo} onClose={handleCloseInfo}>
           <Box sx={style} className={s.modalInfo}>
-            <InfoModal />
-            <StyledButton type="button" onClick={handleCloseInfo}>
-              OK
-            </StyledButton>
+            <InfoModal onClick={handleCloseInfo} />
           </Box>
         </Modal>
-      </div>
+      </div> */}
     </>
   );
 };

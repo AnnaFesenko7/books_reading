@@ -1,7 +1,7 @@
-import { Step, StepTitle, StyledText } from './InfoModule.styled';
+import { Step, StepTitle, StyledText } from './Info.styled';
 import { FiCornerDownRight } from 'react-icons/fi';
 
-export const InfoModalItem = ({ item }) => {
+export const InfoItem = ({ item }) => {
   const { step, icon: Icon, title, text } = item;
   return (
     <>

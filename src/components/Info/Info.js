@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FaBookOpen, FaFlag, FaHome } from 'react-icons/fa';
-import { InfoModalItem } from './InfoModalItem';
-import { Wrapper } from './InfoModule.styled';
+import { InfoItem } from './InfoItem';
+import { StyledButton } from 'components/StyledButton/StyledButton.styled';
+import { Wrapper } from './Info.styled';
 
 const modalContent = [
   {
@@ -18,14 +19,17 @@ const modalContent = [
   },
 ];
 
-export const InfoModal = () => {
+export const Info = ({ onClick }) => {
   return (
     <Wrapper>
       {modalContent.map((item, index) => (
         <li key={index}>
-          <InfoModalItem item={item} />
+          <InfoItem item={item} />
         </li>
       ))}
+      <StyledButton type="button" onClick={onClick}>
+        OK
+      </StyledButton>
     </Wrapper>
   );
 };

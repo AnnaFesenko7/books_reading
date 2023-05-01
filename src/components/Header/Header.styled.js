@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // .main_wrapper {
 //   background-color: #ffffff;
@@ -26,126 +27,44 @@ export const StyledHeader = styled.header`
   padding-left: 16px;
   padding-right: 16px;
   width: 100%;
+`;
 
-  a {
-    font-family: 'Abril Fatface', cursive;
+export const LogoLink = styled(Link)`
+  text-align: center;
+  color: ${p => p.theme.colors.secondaryText};
+  font-family: 'Abril Fatface';
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.m};
+  line-height: 1.35;
+`;
+
+export const PrivateHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  font-weight: ${p => p.theme.fontWeights.light};
+  font-size: ${p => p.theme.fontSizes.s};
+`;
+
+export const StyledNav = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: ${p => p.theme.space[4]}px;
+  cursor: pointer;
+`;
+
+export const ExitButton = styled.button`
+  background-color: transparent;
+  border: none;
+  border-bottom: ${p =>
+    `${p.theme.borders.normal} ${p.theme.colors.secondaryText}`};
+
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.accentColor};
   }
 `;
-/* 
-  
-  
-  ;
-   */
-
-// .logo {
-//   text-align: center;
-//   color: #242a37;
-//   margin-top: 0;
-//   margin-bottom: 0;
-//   font-weight: 400;
-//   font-size: 20px;
-//   line-height: 1.35;
-//   text-decoration: none;
-// }
-
-// .blok {
-//   display: flex;
-//   align-items: center;
-// }
-
-// .button_mobile,
-// .btn_desktop {
-//   background-color: #f5f7fa;
-//   display: block;
-//   width: 33px;
-//   height: 33px;
-//   border-radius: 50%;
-//   border: none;
-//   padding: 0;
-//   margin: 0;
-//   cursor: pointer;
-//   margin-right: 14px;
-//   margin-left: 14px;
-//   font-family: 'Montserrat', sans-serif;
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 14px;
-//   line-height: 17px;
-//   color: #242a37;
-// }
-
-// @media screen and (max-width: 480px) {
-//   .button_mobile {
-//     margin-left: 5px;
-//     margin-right: 5px;
-//     width: 25px;
-//     height: 25px;
-//   }
-// }
-
-// .blok_user {
-//   display: none;
-// }
-
-// .button_exit {
-//   width: 55px;
-//   border: transparent;
-//   border-bottom: 1px solid #242a37;
-//   background-color: transparent;
-//   cursor: pointer;
-//   padding: 0;
-//   composes: text_style;
-//   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-//     border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
-// }
-
-// .button_exit:hover {
-//   color: #ff6b08;
-//   border-bottom: 1px solid #ff6b08;
-// }
-
-// .button_exitIcon {
-//   display: none;
-// }
-
-// @media screen and (max-width: 480px) {
-//   .button_exit {
-//     display: none;
-//   }
-
-//   .button_exitIcon {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: transparent;
-//     cursor: pointer;
-//     padding: 0;
-//     border: none;
-//   }
-
-//   .exitIcon {
-//     fill: #a6abb9;
-//   }
-// }
-
-// .nav {
-//   display: flex;
-//   align-items: center;
-// }
-
-// .nav .link + .link {
-//   margin-left: 5px;
-// }
-
-// .link {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 33px;
-//   height: 33px;
-//   margin-right: 5px;
-//   border-radius: 50%;
-// }
 
 // @media screen and (max-width: 480px) {
 //   .link {
@@ -314,9 +233,7 @@ export const StyledHeader = styled.header`
 //     align-items: center;
 //     width: 300px;
 //   }
-//   .button_exit {
-//     margin-left: 8px;
-//   }
+//
 //   .user_name {
 //     composes: text_style;
 //     margin: 0;

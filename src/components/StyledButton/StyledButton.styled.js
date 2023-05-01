@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-  font-size: ${p => p.theme.fontSize.mainSiz};
+  font-size: ${p => p.theme.fontSizes.s};
   font-weight: 500;
   color: ${p => p.theme.colors.secondaryText};
   padding-top: 10px;
